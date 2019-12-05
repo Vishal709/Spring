@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+<fieldset class="scheduler-border">
+	<legend class="scheduler-border">	<h2>LOGIN</h2></legend>
+		
+		<form method="post" action="/j_spring_security_check">
+			<div class="form-group row">
+				<label for="colFormLabel" class="col-sm-2 col-form-label-lg">Name</label>
+				<div class="col-sm-3">
+					<input type="text" name="name" class="form-control" />
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="colFormLabel" class="col-sm-2 col-form-label-lg">Password</label>
+				<div class="col-sm-3">
+					<input type="password" name="password" class="form-control" />
+				</div>
+			</div>
+			<div class="col-auto">
+			<input type="submit" class="btn btn-primary mb-2" />
+			</div>
+		</form>
+		</fieldset>
+	</div>
+</body>
+</html>

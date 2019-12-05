@@ -1,0 +1,15 @@
+<html>
+<title>add user</title>
+
+<body>
+<div>
+<p th:text=${addSuccess} />
+</div>
+<form action="/addUser" method = "POST">
+<input type="text" name="username" placeholder="enter username">
+<input type="password" name="pass" placeholder="enter password">
+<button type="submit" value="submit"></button>
+</form>
+<span th:text=${error} />
+</body>
+</html>
