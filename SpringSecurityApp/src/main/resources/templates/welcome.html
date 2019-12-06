@@ -5,5 +5,22 @@ Welcome Page
 <body>
 <p> Welcome to Dashboard..</p>
 <a href="/addUser">click me</a>
+<a href="/loadUser">list Users</a>
+<div>
+<table>
+<tr>
+<td>S.No</td>
+<td>Name</td>
+</tr>
+
+<tr th:each="user: ${userList}">
+    <td th:text="${user.id}" />
+    <td th:text="${user.username}" />
+    <td><a href="'/deleteUser?id='th:text=${user.id}">Delete</a></td>
+    <!-- <del></del> -->
+</tr>
+<span th:text="${message}" />
+</table>
+</div>
 </body>
 </html>

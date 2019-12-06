@@ -1,5 +1,8 @@
 package com.SpringSecurity.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.SpringSecurity.DAO.UserDAO;
 import com.SpringSecurity.Model.User;
 import com.SpringSecurity.Service.UserDetailsServiceImpl;
 import com.SpringSecurity.Service.UserService;
@@ -16,6 +20,8 @@ import com.SpringSecurity.Service.UserService;
 public class UserController {
 @Autowired
 UserService userService;
+@Autowired
+UserDAO userDAO;
 
 	/*
 	 * @RequestMapping("/")
@@ -58,6 +64,32 @@ UserService userService;
 	    public String showLoginPage(){
 	    	 return "login";
 	    }
+	 
+	 @RequestMapping(value="/loadUser",method=RequestMethod.GET)
+		public String loadUser(Model model) {
+		 List<User> arraylist= new ArrayList<>();
+		 arraylist=userDAO.findAll();
+		 System.out.println("Users: "+arraylist.toString());
+		 model.addAttribute("userList", arraylist);
+			
+			return "welcome";
+		
+		}
 
-	
+	 @RequestMapping(value="/deleteUser", method = RequestMethod.POST)
+	    public String deleteUser(Model model, @RequestParam int id){
+		 try {
+			userDAO.deleteById(id);
+			model.addAttribute("message", "User deleted");
+			return "welcome";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			model.addAttribute("message", "User deletion didn't happen");
+
+			return "welcome";
+		}
+		 
+	    	 
+	    }
 }
