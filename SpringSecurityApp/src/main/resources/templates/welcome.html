@@ -16,7 +16,7 @@ Welcome Page
 <tr th:each="user: ${userList}">
     <td th:text="${user.id}" />
     <td th:text="${user.username}" />
-    <td><a href="'/deleteUser?id='th:text=${user.id}">Delete</a></td>
+    <td><a th:href="@{'/deleteUser'(id=${user.id})}">Delete</a></td>
     <!-- <del></del> -->
 </tr>
 <span th:text="${message}" />

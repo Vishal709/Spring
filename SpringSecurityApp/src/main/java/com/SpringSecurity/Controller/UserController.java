@@ -36,8 +36,8 @@ UserDAO userDAO;
 		User user=userService.addUser(username, pass);
 		if(user != null) {
 		
-		model.addAttribute("addSuccess", "User Added Successfully");
-		return "addUser";
+			model.addAttribute("addSuccess", "User Added Successfully");
+			return "addUser";
 		}
 		else {
 			model.addAttribute("error", "something is always wrong Daya... ");
@@ -76,7 +76,7 @@ UserDAO userDAO;
 		
 		}
 
-	 @RequestMapping(value="/deleteUser", method = RequestMethod.POST)
+	 @RequestMapping(value="/deleteUser", method = RequestMethod.GET)
 	    public String deleteUser(Model model, @RequestParam int id){
 		 try {
 			userDAO.deleteById(id);
