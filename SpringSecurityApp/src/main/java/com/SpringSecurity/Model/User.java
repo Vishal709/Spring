@@ -1,8 +1,16 @@
 package com.SpringSecurity.Model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -16,6 +24,7 @@ public class User {
 	private String contactNo;
 	private String gender;
 	private String password;
+	
 	
 	public int getId() {
 		return id;
@@ -48,4 +57,25 @@ public class User {
 		this.password = password;
 	}
 	
+	@ManyToMany(cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinTable(
+       name="user_role_mapping",
+       joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+       inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
+    private List<Role> roles;
+	/*
+	 * @OneToMany(mappedBy="user") List<UserRoleMapping> userRoles;
+	 * 
+	 * 
+	 * public List<UserRoleMapping> getUserRoles() { return userRoles; } public void
+	 * setUserRoles(List<UserRoleMapping> userRoles) { this.userRoles = userRoles; }
+	 */
+
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 }

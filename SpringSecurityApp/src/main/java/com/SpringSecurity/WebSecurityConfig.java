@@ -23,11 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
+		http.csrf().disable().authorizeRequests().antMatchers("/addUser").access("hasRole('ADMIN')").anyRequest().authenticated().and().authorizeRequests()
 		 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 		.antMatchers("/welcome").permitAll()
 		.antMatchers("/errorPage").permitAll()
-		.antMatchers("/addUser").permitAll()
+		
 		.antMatchers("/login").permitAll()
 		.anyRequest().authenticated()
 		.and()

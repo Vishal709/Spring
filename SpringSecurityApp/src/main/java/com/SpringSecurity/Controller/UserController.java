@@ -9,11 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.SpringSecurity.DAO.UserDAO;
 import com.SpringSecurity.Model.User;
-import com.SpringSecurity.Service.UserDetailsServiceImpl;
 import com.SpringSecurity.Service.UserService;
 
 @Controller
